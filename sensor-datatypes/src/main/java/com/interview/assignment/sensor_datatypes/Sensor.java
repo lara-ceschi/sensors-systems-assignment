@@ -1,11 +1,18 @@
-package com.interview.assignment.sensors_emulator.sensors;
+package com.interview.assignment.sensor_datatypes;
 
 import java.io.Serializable;
 
+/**
+ * Classe che identifica un sensore, identificato dall'id del sensore stesso e dall'id 
+ * dell'impianto in cui il sensore si trova
+ * Sensor
+ */
 public class Sensor implements Serializable{
     private long sensorId;
     private long plantId;
 
+   public Sensor() {
+    }
    public Sensor(long sensorId, long plantId) {
         this.sensorId = sensorId;
         this.plantId = plantId;

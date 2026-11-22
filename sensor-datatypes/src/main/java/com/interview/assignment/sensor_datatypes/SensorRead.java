@@ -1,9 +1,16 @@
-package com.interview.assignment.sensors_emulator.sensors;
+package com.interview.assignment.sensor_datatypes;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Classe che definisce la lettura ottenuta da un sensore. <br/>
+ * Definita dal sensore stesso, dal timestamp di ottenimento (che non deve essere futuro),
+ * dalla rilevazione della temperatura (tra -20° e +45°), della percentuale di umidità (tra 0 e 100),
+ * della luminosità (tra 0 e 4000).
+ * 
+ * SensorRead
+ */
 public class SensorRead implements Serializable{
     private Sensor sensor;
     private Timestamp timestamp; // TODO: usare Instant? eventualmente va gestita la conversione json
@@ -12,16 +19,8 @@ public class SensorRead implements Serializable{
     private Integer light;
 
 
-    public SensorRead() {} 
-    
-    public SensorRead(Sensor sensor) {
-        this.sensor = sensor;
-        this.timestamp = new Timestamp(System.currentTimeMillis());
-        this.temperature = ThreadLocalRandom.current().nextDouble(-20d, 45d);
-        this.humidityPercentage = ThreadLocalRandom.current().nextInt(0,100);
-        this.light = ThreadLocalRandom.current().nextInt(0,4000); // non ho idea di quali valori siano appropriati
+    public SensorRead() {
     }
-
     public Sensor getSensor() {
         return sensor;
     }

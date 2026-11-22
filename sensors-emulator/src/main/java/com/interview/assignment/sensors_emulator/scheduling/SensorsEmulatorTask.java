@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.interview.assignment.sensors_emulator.services.SensorReadProducer;
+import com.interview.assignment.sensors_emulator.components.SensorReadProducer;
 
 @Service 
 public class SensorsEmulatorTask {

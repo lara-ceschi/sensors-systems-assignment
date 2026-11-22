@@ -2,7 +2,6 @@ package com.interview.assignment.sensor_data_persistence.controller;
 
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;

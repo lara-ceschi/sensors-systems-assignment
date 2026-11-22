@@ -26,7 +26,7 @@ public class SensorsEmulatorTask {
 	private int readCount = 0;
 	
 
-	@Scheduled(fixedRateString = "${sensor.simulator.scheduling.interval:10000}")
+	@Scheduled(fixedRateString = "${sensor.emulator.scheduling.interval:10000}")
 	public void scheduledTask() {
 		readCount++;
 		log.info("Invio lettura numero: {}", readCount);

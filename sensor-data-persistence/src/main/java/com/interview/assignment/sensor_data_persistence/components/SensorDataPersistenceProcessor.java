@@ -3,7 +3,6 @@ package com.interview.assignment.sensor_data_persistence.components;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.interview.assignment.sensor_data_persistence.entities.Sensor;
 import com.interview.assignment.sensor_data_persistence.entities.SensorReading;
 import com.interview.assignment.sensor_data_persistence.repository.SensorReadingRepository;
 import com.interview.assignment.sensor_datatypes.SensorReadingDTO;

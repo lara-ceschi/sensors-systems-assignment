@@ -1,0 +1,36 @@
+services:
+
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  sensors-emulator:
+    image: sensors-emulator:latest
+    container_name: sensors-emulator
+
+    depends_on:
+      - rabbitmq
+
+    ports:
+      - "8081:8080"
+
+  sensor-data-processor:
+    image: sensor-data-processor:latest
+    container_name: sensor-data-processor
+
+    depends_on:
+      - rabbitmq
+
+  sensor-data-persistence:
+    image: sensor-data-persistence:latest
+    container_name: sensor-data-persistence
+
+    depends_on:
+      - rabbitmq
+
+    ports:
+      - "8082:8080"

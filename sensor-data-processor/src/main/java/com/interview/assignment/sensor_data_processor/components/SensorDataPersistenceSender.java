@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbitmq.client.RabbitAmqpTemplate;
 import org.springframework.stereotype.Component;
 
-import com.interview.assignment.sensor_datatypes.SensorRead;
+import com.interview.assignment.sensor_datatypes.SensorReadingDTO;
 
 import org.springframework.amqp.core.Queue;
 
@@ -23,7 +23,7 @@ private static final Logger log = LoggerFactory.getLogger(SensorDataPersistenceS
     }
 
 
-    public void sendDataToBePersisted(SensorRead sensorRead) {
+    public void sendDataToBePersisted(SensorReadingDTO sensorRead) {
         log.info("Invio messaggio {}", sensorRead);
         this.template.convertAndSend(sensorDataPersistenceQueue.getName(), sensorRead);
         // TODO: gestione degli ack e degli errori

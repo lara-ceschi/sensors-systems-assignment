@@ -1,0 +1,1 @@
+docker build -t sensor-data-persistence .

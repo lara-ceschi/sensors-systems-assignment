@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.interview.assignment.sensors_emulator.components.SensorReadProducer;
+import com.interview.assignment.sensors_emulator.components.SensorReadingProducer;
 
 @Service 
 public class SensorsEmulatorTask {
 
 	private static final Logger log = LoggerFactory.getLogger(SensorsEmulatorTask.class);
 
-	private SensorReadProducer sensorReadProducer; 
+	private SensorReadingProducer sensorReadingProducer; 
 
-	public SensorsEmulatorTask(SensorReadProducer sensorReadProducer) {
-		this.sensorReadProducer = sensorReadProducer;
+	public SensorsEmulatorTask(SensorReadingProducer sensorReadingProducer) {
+		this.sensorReadingProducer = sensorReadingProducer;
 	}
 
 	@Value("${sensors.emulator.invalid.read.frequency:5}")
-	int invalidReadFrequency;
+	int invalidReadingFrequency;
 
 	private int readCount = 0;
 	
@@ -31,17 +31,17 @@ public class SensorsEmulatorTask {
 		readCount++;
 		log.info("Invio lettura numero: {}", readCount);
 		
-		if (readCount == invalidReadFrequency) {
-			sensorReadProducer.sendInvalidTimestampRead();
-		} if (readCount == invalidReadFrequency * 2) {
-			sensorReadProducer.sendInvalidTemperatureRead();
-		} if (readCount == invalidReadFrequency * 3) {
-			sensorReadProducer.sendInvalidHumidityRead();
-		} if (readCount == invalidReadFrequency * 4) {
-			sensorReadProducer.sendInvalidLightRead();
+		if (readCount == invalidReadingFrequency) {
+			sensorReadingProducer.sendInvalidTimestampReading();
+		} if (readCount == invalidReadingFrequency * 2) {
+			sensorReadingProducer.sendInvalidTemperatureReading();
+		} if (readCount == invalidReadingFrequency * 3) {
+			sensorReadingProducer.sendInvalidHumidityReading();
+		} if (readCount == invalidReadingFrequency * 4) {
+			sensorReadingProducer.sendInvalidLightReading();
 			readCount = 0;
 		} else {
-			sensorReadProducer.sendValidRead();
+			sensorReadingProducer.sendValidReading();
 		}
 	}
 

@@ -9,22 +9,22 @@ import java.sql.Timestamp;
  * dalla rilevazione della temperatura (tra -20° e +45°), della percentuale di umidità (tra 0 e 100),
  * della luminosità (tra 0 e 4000).
  * 
- * SensorRead
+ * SensorReading
  */
-public class SensorRead implements Serializable{
-    private Sensor sensor;
+public class SensorReadingDTO implements Serializable{
+    private SensorDTO sensor;
     private Timestamp timestamp; // TODO: usare Instant? eventualmente va gestita la conversione json
     private Double temperature;
     private Integer humidityPercentage;
     private Integer light;
 
 
-    public SensorRead() {
+    public SensorReadingDTO() {
     }
-    public Sensor getSensor() {
+    public SensorDTO getSensor() {
         return sensor;
     }
-    public void setSensorId(Sensor sensor) {
+    public void setSensorId(SensorDTO sensor) {
         this.sensor = sensor;
     }
     public Timestamp getTimestamp() {
@@ -69,7 +69,7 @@ public class SensorRead implements Serializable{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        SensorRead other = (SensorRead) obj;
+        SensorReadingDTO other = (SensorReadingDTO) obj;
         if (sensor == null) {
             if (other.sensor != null)
                 return false;

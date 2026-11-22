@@ -1,2 +1,2 @@
-com\interview\assignment\sensor_datatypes\Sensor.class
-com\interview\assignment\sensor_datatypes\SensorRead.class
+com\interview\assignment\sensor_datatypes\SensorDTO.class
+com\interview\assignment\sensor_datatypes\SensorReadingDTO.class

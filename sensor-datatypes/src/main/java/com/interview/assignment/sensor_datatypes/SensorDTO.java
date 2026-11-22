@@ -7,26 +7,26 @@ import java.io.Serializable;
  * dell'impianto in cui il sensore si trova
  * Sensor
  */
-public class Sensor implements Serializable{
-    private long sensorId;
-    private long plantId;
+public class SensorDTO implements Serializable{
+    private Long sensorId;
+    private Long plantId;
 
-   public Sensor() {
+   public SensorDTO() {
     }
-   public Sensor(long sensorId, long plantId) {
+   public SensorDTO(Long sensorId, Long plantId) {
         this.sensorId = sensorId;
         this.plantId = plantId;
     }
-    public long getSensorId() {
+    public Long getSensorId() {
         return sensorId;
     }
-    public void setSensorId(long sensorId) {
+    public void setSensorId(Long sensorId) {
         this.sensorId = sensorId;
     }
-    public long getPlantId() {
+    public Long getPlantId() {
         return plantId;
     }
-    public void setPlantId(long plantId) {
+    public void setPlantId(Long plantId) {
         this.plantId = plantId;
     }
     @Override

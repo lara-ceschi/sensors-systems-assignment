@@ -8,22 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.interview.assignment.sensor_data_processor.components.SensorDataPersistenceSender;
-import com.interview.assignment.sensor_datatypes.SensorRead;
+import com.interview.assignment.sensor_datatypes.SensorReadingDTO;
 
 
 @Service 
-public class SensorReadProcessor {
+public class SensorReadingProcessor {
 
-private static final Logger log = LoggerFactory.getLogger(SensorReadProcessor.class);
+private static final Logger log = LoggerFactory.getLogger(SensorReadingProcessor.class);
     @Autowired 
     private final SensorDataPersistenceSender sensorDataPersistenceSender;
 
-    public SensorReadProcessor(SensorDataPersistenceSender sensorDataPersistenceSender) {
+    public SensorReadingProcessor(SensorDataPersistenceSender sensorDataPersistenceSender) {
         this.sensorDataPersistenceSender = sensorDataPersistenceSender;
     }
 
 
-    public boolean handleRead(SensorRead read) {
+    public boolean handleReading(SensorReadingDTO read) {
         boolean inputCorretto = true;
         
         if (read.getSensor() == null) {

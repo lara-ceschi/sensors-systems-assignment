@@ -6,12 +6,13 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.UseMainMethod;
 
 import com.interview.assignment.sensor_data_persistence.components.SensorDataPersistenceProcessor;
 import com.interview.assignment.sensor_datatypes.SensorDTO;
 import com.interview.assignment.sensor_datatypes.SensorReadingDTO;
 
-@SpringBootTest
+@SpringBootTest(useMainMethod = UseMainMethod.ALWAYS, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class SensorDataPersistenceApplicationTests {
 
 	@Autowired 
@@ -33,4 +34,6 @@ class SensorDataPersistenceApplicationTests {
 		sensorDataPersistenceProcessor.convertAndInsert(read);
 	}
 
+
+	
 }

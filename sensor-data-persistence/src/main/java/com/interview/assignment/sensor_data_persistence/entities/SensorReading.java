@@ -2,12 +2,10 @@ package com.interview.assignment.sensor_data_persistence.entities;
 
 import java.sql.Timestamp;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 @Entity 
 public class SensorReading {
@@ -16,9 +14,7 @@ public class SensorReading {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private Sensor sensor;
-    
+    private Long sensorId;
     private Timestamp timestamp;
     private Double temperature;
     private Integer humidityPercentage;
@@ -67,12 +63,12 @@ public class SensorReading {
         this.light = light;
     }
 
-    public Sensor getSensor() {
-        return sensor;
+    public Long getSensorId() {
+        return sensorId;
     }
 
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
+    public void setSensorId(Long sensorId) {
+        this.sensorId= sensorId;
     }
 
 

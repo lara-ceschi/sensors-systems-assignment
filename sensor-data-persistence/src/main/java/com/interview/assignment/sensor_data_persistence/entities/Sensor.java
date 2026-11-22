@@ -1,10 +1,8 @@
 package com.interview.assignment.sensor_data_persistence.entities;
 
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity 
 public class Sensor {
@@ -14,8 +12,6 @@ public class Sensor {
 
     private Long plantId;
 
-    @OneToMany 
-    private List<SensorReading> sensorReadings;
 
     public Sensor() {
     }

@@ -34,3 +34,10 @@ services:
 
     ports:
       - "8082:8080"
+
+  sensor-controller:
+    image: sensor-controller:latest
+    container_name: sensor-controller
+
+    depends_on:
+      - rabbitmq

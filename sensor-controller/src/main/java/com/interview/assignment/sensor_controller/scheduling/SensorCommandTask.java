@@ -1,8 +1,6 @@
 package com.interview.assignment.sensor_controller.scheduling;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -13,8 +11,7 @@ import com.interview.assignment.sensor_controller.components.SensorCommandSender
 @Service 
 public class SensorCommandTask {
 
-	private static final Logger log = LoggerFactory.getLogger(SensorCommandTask.class);
-
+	
 	private final SensorCommandSender sensorCommandSender;
 
 	
@@ -34,9 +31,11 @@ public class SensorCommandTask {
 	@Scheduled(fixedRateString = "${sensor.command.scheduling.interva:60000}")
 	public void scheduledTask() {
 		
-		if (commandCount % 2 == 0) {
+		if (commandCount % 3 == 0) {
+			sensorCommandSender.sendStopCommand(sensorCount);
+		} else if (commandCount % 3 == 1) {
 			sensorCommandSender.sendRestartCommand(sensorCount);
-		} else {
+		}else {
 			sensorCommandSender.sendRescheduleCommand(sensorCount);
 		}
 

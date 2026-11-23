@@ -8,6 +8,7 @@ import java.io.Serializable;
  * Sensor
  */
 public class SensorDTO implements Serializable{
+    
     private Long sensorId;
     private Long plantId;
 

@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 
 import com.interview.assignment.sensor_data_processor.services.SensorReadingProcessor;
 import com.interview.assignment.sensor_datatypes.SensorReadingDTO;
+import com.interview.assignment.sensor_datatypes.constants.QueueNames;
 
 @Component 
 public class SensorReadingReceiver {
 private static final Logger log = LoggerFactory.getLogger(SensorReadingReceiver.class);
 
-   private static final String QUEUE_LETTURE = "LETTURE";
 
    private final SensorReadingProcessor sensorReadingProcessor;
   
@@ -22,7 +22,7 @@ private static final Logger log = LoggerFactory.getLogger(SensorReadingReceiver.
     }
 
 
-    @RabbitListener(queues = QUEUE_LETTURE)
+    @RabbitListener(queues = QueueNames.LETTURA)
     public void receive(SensorReadingDTO reading) {
             log.info("Ricevuto messaggio {}", reading);
 

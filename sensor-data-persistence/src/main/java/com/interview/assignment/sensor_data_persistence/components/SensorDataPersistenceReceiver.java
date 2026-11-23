@@ -7,12 +7,11 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 import com.interview.assignment.sensor_datatypes.SensorReadingDTO;
+import com.interview.assignment.sensor_datatypes.constants.QueueNames;
 
 @Component 
 public class SensorDataPersistenceReceiver {
 private static final Logger log = LoggerFactory.getLogger(SensorDataPersistenceReceiver.class);
-
-   private static final String QUEUE_PERSISTENZA_DATI = "PERSISTENZA_DATI";
 
    private final SensorDataPersistenceProcessor sensorDataPersistenceProcessor;
   
@@ -21,7 +20,7 @@ private static final Logger log = LoggerFactory.getLogger(SensorDataPersistenceR
     }
 
 
-    @RabbitListener(queues = QUEUE_PERSISTENZA_DATI)
+    @RabbitListener(queues = QueueNames.PERSISTENT_DATA)
     public void receive(SensorReadingDTO reading) {
             log.info("Ricevuto messaggio {}", reading);
 

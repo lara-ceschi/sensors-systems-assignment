@@ -1,10 +1,9 @@
 package com.interview.assignment.sensor_data_persistence.entities;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-@Entity 
+@Table ("SENSOR") 
 public class Sensor {
     
     @Id 

@@ -6,13 +6,21 @@ import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.interview.assignment.sensor_datatypes.constants.QueueNames;
+
 @Configuration
 public class RabbitMQConfiguration {
-    private static final String QUEUE_LETTURE = "LETTURE";
    
     @Bean
-    public Queue sensorReadQueue() {
-        return QueueBuilder.durable(QUEUE_LETTURE)
+    public Queue sensorCommandQueue() {
+        return QueueBuilder.durable(QueueNames.COMANDI)
+                .maxPriority(3)
+                .build();
+    }
+
+    @Bean
+    public Queue sensorReadingQueue() {
+        return QueueBuilder.durable(QueueNames.LETTURA)
                 .build();
     }
 

@@ -1,21 +1,20 @@
 package com.interview.assignment.sensor_data_persistence.entities;
 
-import java.sql.Timestamp;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.time.Instant;
 
-@Entity 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
+
+@Table("SENSOR_READING")
 public class SensorReading {
 
     @Id 
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     private Long sensorId;
-    private Timestamp timestamp;
+    private Instant timestamp;
     private Double temperature;
     private Integer humidityPercentage;
     private Integer light;
@@ -31,11 +30,11 @@ public class SensorReading {
         this.id = id;
     }
 
-    public Timestamp getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
     }
 

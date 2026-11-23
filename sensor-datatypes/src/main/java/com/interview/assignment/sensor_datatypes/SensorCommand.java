@@ -1,6 +1,7 @@
 package com.interview.assignment.sensor_datatypes;
 
 public class SensorCommand {
+    private int destinatario;
     private COMMAND command;
     private Integer value;
 
@@ -22,6 +23,22 @@ public class SensorCommand {
 
    public enum COMMAND {
         RESTART,
-        CHANGE_INTERVAL
+        CHANGE_INTERVAL,
+        STOP
     }
+
+   public int getDestinatario() {
+    return destinatario;
+   }
+
+   public void setDestinatario(int destinatario) {
+    this.destinatario = destinatario;
+   }
+
+   @Override
+   public String toString() {
+    return "SensorCommand [destinatario=" + destinatario + ", command=" + command + ", value=" + value + "]";
+   }
+
+   
 }

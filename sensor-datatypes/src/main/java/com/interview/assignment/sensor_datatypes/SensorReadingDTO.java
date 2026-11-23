@@ -1,7 +1,7 @@
 package com.interview.assignment.sensor_datatypes;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.Instant;
 
 /**
  * Classe che definisce la lettura ottenuta da un sensore. <br/>
@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  */
 public class SensorReadingDTO implements Serializable{
     private SensorDTO sensor;
-    private Timestamp timestamp; // TODO: usare Instant? eventualmente va gestita la conversione json
+    private Instant timestamp; 
     private Double temperature;
     private Integer humidityPercentage;
     private Integer light;
@@ -27,10 +27,10 @@ public class SensorReadingDTO implements Serializable{
     public void setSensorId(SensorDTO sensor) {
         this.sensor = sensor;
     }
-    public Timestamp getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
     }
     public Double getTemperature() {

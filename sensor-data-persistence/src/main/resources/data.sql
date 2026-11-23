@@ -1,1 +1,8 @@
-insert into sensor values (1,1), (2,2), (3,1), (4,1);
+INSERT INTO SENSOR VALUES (1,1), (2,2), (3,1), (4,1);
+
+INSERT INTO SENSOR_READING (SENSOR_ID,
+    TIMESTAMP,
+    TEMPERATURE,
+    HUMIDITY_PERCENTAGE,
+    LIGHT) 
+VALUES (1, '2026-11-23 10:00:00.000', 1.3, 7, 15);

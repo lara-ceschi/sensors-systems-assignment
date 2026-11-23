@@ -1,28 +1,22 @@
 package com.interview.assignment.sensor_controller.configuration;
 
-import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.interview.assignment.sensor_datatypes.constants.QueueNames;
+
 @Configuration
 public class RabbitMQConfiguration {
-    private static final String QUEUE_COMANDI = "COMANDI";
-    private static final String EXCHANGE_COMANDI = "exch-comandi";
    
     @Bean
-    public Queue sensorReadQueue() {
-        return QueueBuilder.durable(QUEUE_COMANDI)
+    public Queue sensorCommandQueue() {
+        return QueueBuilder.durable(QueueNames.COMANDI)
+                .maxPriority(3)
                 .build();
     }
-
-    @Bean
-	public FanoutExchange exchange() {
-		return new FanoutExchange(EXCHANGE_COMANDI);
-	}
-
     
     @Bean
     JacksonJsonMessageConverter converter() {

@@ -57,6 +57,19 @@
 			<artifactId>sensor-datatypes</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+		
+		<!-- rest -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+			<version>3.2.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

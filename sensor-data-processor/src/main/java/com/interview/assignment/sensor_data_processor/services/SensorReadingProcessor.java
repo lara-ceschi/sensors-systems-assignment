@@ -1,6 +1,7 @@
 package com.interview.assignment.sensor_data_processor.services;
 
-import java.sql.Timestamp;
+
+import java.time.Instant;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +51,7 @@ private static final Logger log = LoggerFactory.getLogger(SensorReadingProcessor
             inputCorretto = false;
         }
 
-        if (read.getTimestamp() == null || read.getTimestamp().after(new Timestamp(System.currentTimeMillis()))) {
+        if (read.getTimestamp() == null || read.getTimestamp().isAfter(Instant.now())) {
             log.error("Lettura con timestamp non presente o non valido: {}", read);
             inputCorretto = false;
         }

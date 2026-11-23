@@ -1,4 +1,5 @@
 com\interview\assignment\sensor_datatypes\SensorCommand.class
 com\interview\assignment\sensor_datatypes\SensorDTO.class
+com\interview\assignment\sensor_datatypes\constants\QueueNames.class
 com\interview\assignment\sensor_datatypes\SensorCommand$COMMAND.class
 com\interview\assignment\sensor_datatypes\SensorReadingDTO.class

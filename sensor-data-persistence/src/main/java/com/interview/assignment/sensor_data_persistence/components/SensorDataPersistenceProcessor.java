@@ -1,7 +1,6 @@
 package com.interview.assignment.sensor_data_persistence.components;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.interview.assignment.sensor_data_persistence.entities.SensorReading;
 import com.interview.assignment.sensor_data_persistence.repository.SensorReadingRepository;
@@ -17,9 +16,7 @@ public class SensorDataPersistenceProcessor {
         this.sensorReadingRepository = sensorReadingRepository;
     }
 
-
-
-    @Transactional 
+ 
     public void convertAndInsert(SensorReadingDTO read) {
         SensorReading sensorReading = new SensorReading();
         
@@ -31,7 +28,7 @@ public class SensorDataPersistenceProcessor {
         sensorReading.setTemperature(read.getTemperature());
         sensorReading.setTimestamp(read.getTimestamp());
 
-        sensorReadingRepository.save(sensorReading); 
+        sensorReadingRepository.save(sensorReading).subscribe(); 
         // TODO: attenzione, è una upsert, verificare che sia il comportamento voluto
     }
 }

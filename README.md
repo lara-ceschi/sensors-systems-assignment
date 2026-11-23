@@ -29,20 +29,21 @@ Ho utilizzato Microsoft 365 Copilot per:
 - Brainstorming nel valutare diverse opzioni architetturali (es: utilizzare una coda dedicata per sensore per i comandi o una coda condivisa, oppure polyrepo vs monorepo)
 - Debugging, per velocità ho spesso fornito al chatbot la stacktrace per identificare velocemente le cause delle eccezioni
 
-# sensor-controller #
-### proprietà configurabili: ###
+## il sistema ##
+### sensor-controller ###
+#### proprietà configurabili: ####
 - sensor.command.scheduling.interval=30000 -> ogni quanti millisecondi viene mandato un comando a un sensori, se non valorizzato il default è 60 secondi
 - sensor.number=5 -> quanti sensori sono presenti nel sistema, obbligatorio
 
-### cosa fa: ###
+#### cosa fa: ####
 un task schedulato emette comandi (SensorCommand) ai sensori scrivendoli sulla coda COMANDI e assegnando a ciascuno una priorità da 1 a 3  (restart=1, stop=2, cambia intervallo di schedulazione=3), cicla sia i sensori che i comandi per coprire più casi.
 
-# sensors-emulator #
-### proprietà configurabili: ###
+### sensors-emulator ###
+#### proprietà configurabili: ####
 - sensor.emulator.scheduling.interval=10 -> ogni quanti secondi un sensore emette una lettura, se non valorizzato di default vale 10 secondi
 - sensor.number=5 -> quanti sensori sono presenti nel sistema, obbligatorio
 
-### cosa fa: ###
+#### cosa fa: ####
 - mantiene in memoria lo stato dei sensori ed espone un'api reactive per vedere i sensori
   -  documentazione http://localhost:8082/swagger-ui/index.html
   -  chiamata dall'interno del container curl "http://localhost:8080/sensors/all" 
@@ -50,12 +51,12 @@ un task schedulato emette comandi (SensorCommand) ai sensori scrivendoli sulla c
 - un task schedulato per ogni sensore scrive le letture (SensorReadingDTO) sulla coda LETTURE, emette anche letture non valide (timestamp futuro o valori di umidità, temperatura e luce fuori dal range valido)
 
 
-# sensor-data-processor #
-### cosa fa: ###
+### sensor-data-processor ###
+#### cosa fa: ####
 riceve le letture (SensorReadingDTO) dalla coda LETTURE, verifica la validità dei dati (timestamp passato, valori di umidità, temperatura e luce nel range valido). I dati che non superano le verifiche vengono scartati, quelli che le superano vengono spediti nella coda PERSISTENT_DATA.
 
-# sensor-data-persistence #
-### cosa fa: ###
+### sensor-data-persistence ###
+#### cosa fa: ####
 - espone le api per vedere le letture dei sensori che sono presenti a DB
   -  documentazione http://localhost:8081/swagger-ui/index.html
   -  esempi di chiamate dall'interno del container:
@@ -64,7 +65,7 @@ riceve le letture (SensorReadingDTO) dalla coda LETTURE, verifica la validità d
     -  curl "http://localhost:8080/readings/all"
 - riceve le letture (SensorReadingDTO) dalla coda PERSISTENT_DATA e provvede a salvarle nel DB
 
-# con più tempo e in produzione... #
+## con più tempo e in produzione... ##
 - autenticazione su API
 - gestione degli errori (inserimento, connessione)
 - gestione di ack e nack sulle code

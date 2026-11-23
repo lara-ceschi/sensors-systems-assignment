@@ -61,5 +61,7 @@ riceve le letture (SensorReadingDTO) dalla coda LETTURE, verifica la validità d
 - DB "vero" e non solo in memoria
 - CI/CD
 - batterie test (junit, integrazione, carico)
+- ottimizzazione delle immagini docker
+- orchestrazione dei container
 - lombok -> non l'ho usato perché il progetto era contenuto, ma col senno di poi era meglio farlo
 - RabbitMQ? -> l'ho usato da principiante, sicuramente si poteva usare meglio

@@ -7,8 +7,11 @@
 - r2dbc: db in memoria, per non dover fare un altro microservizio con il database
 - OpenAPI: documentazione immediata con swagger, perfetto anche per testare le chiamate
 - Docker Desktop, docker-compose: semplice gestione dei container dei microservizi.
+- Visual Studio Code: editor lightweight
+- Spring Initialzr: per avere una base di progetto da cui partire velocemente
 
 ## Architettura: ##
+- Progetti maven distinti gestiti come monorepo
 - 3 code di messaggi durable per mantenerle anche in caso di spegnimento di RabbitMQ:
   - LETTURE: per le letture dei sensori, scritta da sensors-emulator, letta da sensor-data-processor
   - PERSISTENT_DATA: per i dati da persistere a DB, scritta da sensor-data-processor e letta da sensor-data-persistence
@@ -18,6 +21,13 @@
 - 1 libreria (sensor-datatypes) per contenere gli elementi comuni ai microservizi (oggetti SensorDTO, SensorReadingDTO, SensorCommand e le costanti QueueNames con i nomi delle code)
 - numero di sensori nel sistema configurabile, intervallo di schedulazione dei comandi e dell'emissione delle letture configurabile
 - i container partono tutti dall'immagine eclipse-temurin:25-jre, i container di microservizi che espongono API hanno anche il comando curl disponibile all'interno del container
+
+## Uso dell'AI ##
+Ho utilizzato Microsoft 365 Copilot per:
+- Aiutarmi con la sintassi dei comandi git e docker e con la configurazione di Visual Studio Code e RabbitMQ
+- Farmi generare esempi semplificati di codice o spiegare porzioni di codice presi dalla documentazione ufficiale e dai tutorial di Spring e RabbitMQ
+- Brainstorming nel valutare diverse opzioni architetturali (es: utilizzare una coda dedicata per sensore per i comandi o una coda condivisa, oppure polyrepo vs monorepo)
+- Debugging, per velocità ho spesso fornito al chatbot la stacktrace per identificare velocemente le cause delle eccezioni
 
 # sensor-controller #
 ### proprietà configurabili: ###
@@ -63,5 +73,6 @@ riceve le letture (SensorReadingDTO) dalla coda LETTURE, verifica la validità d
 - batterie test (junit, integrazione, carico)
 - ottimizzazione delle immagini docker
 - orchestrazione dei container
+- utilizzo di un tool di AI specializzato in coding
 - lombok -> non l'ho usato perché il progetto era contenuto, ma col senno di poi era meglio farlo
 - RabbitMQ? -> l'ho usato da principiante, sicuramente si poteva usare meglio

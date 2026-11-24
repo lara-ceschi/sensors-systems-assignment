@@ -9,6 +9,7 @@
 - Docker Desktop, docker-compose: semplice gestione dei container dei microservizi.
 - Visual Studio Code: editor lightweight
 - Spring Initialzr: per avere una base di progetto da cui partire velocemente
+- GitHub
 
 ## Architettura: ##
 - Progetti maven distinti gestiti come monorepo
@@ -23,11 +24,11 @@
 - i container partono tutti dall'immagine eclipse-temurin:25-jre, i container di microservizi che espongono API hanno anche il comando curl disponibile all'interno del container
 
 ## Uso dell'AI ##
-Ho utilizzato Microsoft 365 Copilot per:
+Ho utilizzato Microsoft 365 Copilot come acceleratore per:
 - Aiutarmi con la sintassi dei comandi git e docker e con la configurazione di Visual Studio Code e RabbitMQ
 - Farmi generare esempi semplificati di codice o spiegare porzioni di codice presi dalla documentazione ufficiale e dai tutorial di Spring e RabbitMQ
 - Brainstorming nel valutare diverse opzioni architetturali (es: utilizzare una coda dedicata per sensore per i comandi o una coda condivisa, oppure polyrepo vs monorepo)
-- Debugging, per velocità ho spesso fornito al chatbot la stacktrace per identificare velocemente le cause delle eccezioni
+- Risoluzione eccezioni, per velocità ho spesso fornito al chatbot la stacktrace e porzioni di codice per identificare velocemente le cause
 
 ## il sistema ##
 ### sensor-controller ###
